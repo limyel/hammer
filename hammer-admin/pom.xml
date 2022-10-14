@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hammer-admin</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.limyel</groupId>
+            <artifactId>hammer-common</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
