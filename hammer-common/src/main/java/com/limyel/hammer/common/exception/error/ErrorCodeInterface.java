@@ -1,4 +1,4 @@
-package com.limyel.hammer.exception.error;
+package com.limyel.hammer.common.exception.error;
 
 public interface ErrorCodeInterface {
 

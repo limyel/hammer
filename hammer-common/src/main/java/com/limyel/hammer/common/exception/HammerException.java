@@ -1,6 +1,6 @@
-package com.limyel.hammer.exception;
+package com.limyel.hammer.common.exception;
 
-import com.limyel.hammer.exception.error.ErrorCodeInterface;
+import com.limyel.hammer.common.exception.error.ErrorCodeInterface;
 
 public class HammerException extends RuntimeException {
     private static final long serialVersionUID = 1L;

@@ -1,6 +1,6 @@
 package com.limyel.hammer.common.exception;
 
-import com.limyel.hammer.exception.error.ErrorCodeInterface;
+import com.limyel.hammer.common.exception.error.ErrorCodeInterface;
 
 public enum SysErrorCode implements ErrorCodeInterface {
     ;

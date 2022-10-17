@@ -1,6 +1,6 @@
-package com.limyel.hammer.api;
+package com.limyel.hammer.common.api;
 
-import com.limyel.hammer.exception.HammerException;
+import com.limyel.hammer.common.exception.HammerException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
