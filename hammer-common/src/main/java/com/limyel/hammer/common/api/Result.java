@@ -3,9 +3,11 @@ package com.limyel.hammer.common.api;
 import com.limyel.hammer.common.exception.HammerException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Result<T> {
 
     private Integer code;
