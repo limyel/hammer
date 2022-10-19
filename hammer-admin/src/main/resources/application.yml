@@ -4,7 +4,7 @@ server:
     threads:
       max: 1000
       min-spare: 30
-  port: 5000
+  port: 5678
   servlet:
     context-path: /hammer-admin
     session:
@@ -64,6 +64,7 @@ mybatis-plus:
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
     lazy-loading-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 hammer:
