@@ -21,11 +21,11 @@ public class Result<T> {
     private final static Integer FAIL_CODE = -1;
     private final static String FAIL_MSG = "操作失败";
 
-    public static <T> Result<T> ok() {
-        return ok(null);
+    public static <T> Result<T> success() {
+        return success(null);
     }
 
-    public static <T> Result<T> ok(T data) {
+    public static <T> Result<T> success(T data) {
         return build(SUCCESS_CODE, SUCCESS_MSG, data);
     }
 

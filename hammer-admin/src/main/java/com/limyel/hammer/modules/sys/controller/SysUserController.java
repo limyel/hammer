@@ -37,7 +37,7 @@ public class SysUserController {
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize) {
         IPage<SysUserDTO> page = sysUserService.list(pageNum, pageSize);
-        return Result.ok(page);
+        return Result.success(page);
     }
 
     @PostMapping("/password")
