@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.hammer.common.entity.BaseEntity;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
  *
  * @author limyel
  */
+@Data
 @TableName("sys_log_operation")
 public class SysLogOperationEntity extends BaseEntity {
 
@@ -35,6 +37,11 @@ public class SysLogOperationEntity extends BaseEntity {
      * 请求方法
      */
     private String requestMethod;
+
+    /**
+     * 执行时间
+     */
+    private Integer requestTime;
 
     /**
      * 调用方法
