@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.limyel.hammer.common.annotation.LogOperation;
 import com.limyel.hammer.common.constant.OperationStatusConstant;
 import com.limyel.hammer.common.utils.ExceptionUtil;
-import com.limyel.hammer.common.utils.HttpContextUtils;
+import com.limyel.hammer.common.utils.HttpContextUtil;
 import com.limyel.hammer.modules.log.entity.SysLogOperationEntity;
 import com.limyel.hammer.modules.log.service.SysLogOperationService;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sun.net.util.IPAddressUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -68,7 +67,7 @@ public class LogOperationAspect {
         log.setStatus(status);
         log.setRequestTime((int) time);
 
-        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
         log.setRequestUri(request.getRequestURI());
         log.setIp(request.getRemoteAddr());
         log.setRequestMethod(request.getMethod());
