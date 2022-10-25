@@ -12,10 +12,10 @@ public class PasswordDTO implements Serializable {
     /**
      * 原密码
      */
-    @NotBlank(message = "{sysuser.password.require}")
+    @NotBlank(message = "sysuser.password.require")
     private String password;
 
-    @NotBlank(message = "{sysuser.password.require}")
+    @NotBlank(message = "sysuser.password.require")
     private String newPassword;
 
 }

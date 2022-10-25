@@ -45,6 +45,10 @@ public class Result<T> {
         return build(FAIL_CODE, FAIL_MSG, data);
     }
 
+    public static <T> Result<T> failMsg(String msg) {
+        return build(FAIL_CODE, msg, null);
+    }
+
     public static <T> Result<T> build(Integer code, String msg) {
         return build(code, msg, null);
     }
