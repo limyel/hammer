@@ -40,8 +40,13 @@ public class SysUserController {
         return Result.success(page);
     }
 
+    /**
+     * 修改密码
+     * @param passwordDTO
+     * @return
+     */
     @PostMapping("/password")
-    public Result password(@Validated @RequestBody PasswordDTO passwordDTO) {
+    public Result<?> password(@Validated @RequestBody PasswordDTO passwordDTO) {
         return null;
     }
 
