@@ -4,12 +4,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.hammer.common.api.Result;
 import com.limyel.hammer.modules.sys.dto.PasswordDTO;
 import com.limyel.hammer.modules.sys.dto.SysUserDTO;
-import com.limyel.hammer.modules.sys.service.SysRoleUserService;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 
 /**
  * 用户
@@ -22,9 +20,6 @@ public class SysUserController {
 
     @Autowired
     private SysUserService sysUserService;
-
-    @Autowired
-    private SysRoleUserService sysRoleUserService;
 
     /**
      * 分页

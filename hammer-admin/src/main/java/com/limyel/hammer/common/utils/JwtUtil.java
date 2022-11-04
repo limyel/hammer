@@ -1,21 +1,17 @@
 package com.limyel.hammer.common.utils;
 
-import cn.hutool.http.HttpException;
 import com.limyel.hammer.common.exception.HammerException;
 import com.limyel.hammer.common.exception.SysErrorCode;
-import com.limyel.hammer.modules.sys.dao.SysUserDao;
 import com.limyel.hammer.modules.sys.entity.SysUserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 // todo 更好的 JWT 工具
 @Component
@@ -24,9 +20,6 @@ public class JwtUtil {
     public static final String CLAIM_KEY_ID = "id";
 
     public static final String CLAIM_KEY_CREATE_TIME = "createTime";
-
-    @Autowired
-    private SysUserDao sysUserDao;
 
     @Value("${blog.jwt.secret:123456}")
     private String secret;

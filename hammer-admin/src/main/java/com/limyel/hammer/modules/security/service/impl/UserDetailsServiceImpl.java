@@ -1,6 +1,5 @@
 package com.limyel.hammer.modules.security.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.limyel.hammer.common.exception.HammerException;
@@ -8,7 +7,6 @@ import com.limyel.hammer.common.exception.SysErrorCode;
 import com.limyel.hammer.modules.security.entity.LoginSysUser;
 import com.limyel.hammer.modules.sys.dao.SysUserDao;
 import com.limyel.hammer.modules.sys.entity.SysUserEntity;
-import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

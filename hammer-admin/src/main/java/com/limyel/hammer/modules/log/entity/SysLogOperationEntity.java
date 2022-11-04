@@ -1,13 +1,9 @@
 package com.limyel.hammer.modules.log.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.hammer.common.entity.BaseEntity;
 import lombok.Data;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import lombok.EqualsAndHashCode;
 
 /**
  * 操作日志
@@ -15,6 +11,7 @@ import java.time.LocalDateTime;
  * @author limyel
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @TableName("sys_log_operation")
 public class SysLogOperationEntity extends BaseEntity {
 

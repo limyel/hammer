@@ -18,11 +18,11 @@ public enum SysErrorCode implements ErrorCodeInterface {
 
     @Override
     public int code() {
-        return 0;
+        return code;
     }
 
     @Override
     public String msg() {
-        return null;
+        return msg;
     }
 }
