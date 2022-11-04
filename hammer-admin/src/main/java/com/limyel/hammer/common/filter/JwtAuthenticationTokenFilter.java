@@ -40,7 +40,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 获取 SysUser
         Long userId = jwtUtil.getUserId(token);
         Optional<SysUserEntity> optionalSysUser = Optional.ofNullable(sysUserDao.selectById(userId));
-        SysUserEntity sysUser = optionalSysUser.orElseThrow(() -> {
+        SysUserEntity sysUser = optionalSysUser.<HammerException>orElseThrow(() -> {
             throw new HammerException(SysErrorCode.SYS_USER_NOT_FOUND);
         });
 

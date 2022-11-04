@@ -15,4 +15,6 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     IPage<SysUserDTO> list(Integer pageNum, Integer pageSize);
 
+    SysUserEntity getByUsername(String username);
+
 }
