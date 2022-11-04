@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        String msg = ValidationMsgUtil.msg(e.getBindingResult().getFieldError().getDefaultMessage());
+        String msg = ValidationMsgUtil.msg(e.getFieldError().getDefaultMessage());
         return Result.failMsg(msg);
     }
 }
