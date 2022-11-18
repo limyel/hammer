@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.limyel.hammer.modules.sys.dto.SysUserDTO;
 import com.limyel.hammer.modules.sys.entity.SysUserEntity;
 
+import java.util.Set;
+
 /**
  * 系统用户
  *
@@ -17,4 +19,5 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     SysUserEntity getByUsername(String username);
 
+    Set<String> getMenuPermissionsById(Long sysUserId);
 }

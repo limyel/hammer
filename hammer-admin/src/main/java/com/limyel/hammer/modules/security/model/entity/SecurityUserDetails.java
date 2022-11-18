@@ -1,24 +1,50 @@
-package com.limyel.hammer.modules.security.entity;
+package com.limyel.hammer.modules.security.model.entity;
 
 import com.limyel.hammer.modules.sys.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginSysUser implements UserDetails {
+public class SecurityUserDetails implements UserDetails {
 
     private SysUserEntity sysUser;
 
+    private Set<String> permissions;
+
+    private String token;
+
+    private Long loginTime;
+
+    private Long expireTime;
+
+    private Set<SimpleGrantedAuthority> authorities;
+
+    public SecurityUserDetails(SysUserEntity sysUser, Set<String> permissions) {
+        this.sysUser = sysUser;
+        this.permissions = permissions;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if (!ObjectUtils.isEmpty(authorities)) {
+            return authorities;
+        }
+
+        authorities = permissions.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toSet());
+        return authorities;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.limyel.hammer.modules.sys.dto.PasswordDTO;
 import com.limyel.hammer.modules.sys.dto.SysUserDTO;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class SysUserController {
      * @return
      */
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('sys:user:list')")
     public Result<IPage<SysUserDTO>> list(
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize) {

@@ -1,9 +1,9 @@
-package com.limyel.hammer.modules.security.dto;
+package com.limyel.hammer.modules.security.model.request;
 
 import lombok.Data;
 
 @Data
-public class LoginDTO {
+public class LoginRequest {
 
     private String username;
 

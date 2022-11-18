@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -121,5 +122,10 @@ public class RedisUtil {
 
     public void expire(String key, long expire) {
         redisTemplate.expire(key, expire, TimeUnit.SECONDS);
+    }
+
+    public boolean exists(String key) {
+        return Optional.ofNullable(redisTemplate.keys(key))
+                .isPresent();
     }
 }

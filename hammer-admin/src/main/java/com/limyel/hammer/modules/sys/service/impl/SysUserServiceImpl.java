@@ -12,6 +12,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * 系统用户
  *
@@ -36,5 +40,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
         queryWrapper.eq(SysUserEntity::getUsername, username);
         
         return sysUserDao.selectOne(queryWrapper);
+    }
+
+    @Override
+    public Set<String> getMenuPermissionsById(Long sysUserId) {
+        Set<String> permissions = sysUserDao.selectMenuPermissionsById(sysUserId);
+        return permissions.stream()
+                .map(permission -> permission.split(","))
+                .flatMap(Arrays::stream)
+                .collect(Collectors.toSet());
     }
 }

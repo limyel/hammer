@@ -1,5 +1,7 @@
 package com.limyel.hammer.common.redis;
 
+import java.util.Arrays;
+
 public class RedisKey {
 
     /**
@@ -13,11 +15,12 @@ public class RedisKey {
 
     /**
      * 登录用户Key
-     * @param id
+     * @param key
      * @return
      */
-    public static String getSecurityUserKey(Long id) {
-        return "sys:security:user:" + id;
+    public static String getSecurityUserKey(String... key) {
+        String join = String.join(":", key);
+        return "sys:security:user:" + join;
     }
 
 }
