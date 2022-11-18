@@ -2,7 +2,7 @@ package com.limyel.hammer.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.limyel.hammer.modules.sys.dao.SysRoleDeptDao;
-import com.limyel.hammer.modules.sys.entity.SysRoleDeptEntity;
+import com.limyel.hammer.modules.sys.model.entity.SysRoleDeptEntity;
 import com.limyel.hammer.modules.sys.service.SysRoleDeptService;
 import org.springframework.stereotype.Service;
 

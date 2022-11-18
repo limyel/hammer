@@ -1,4 +1,4 @@
-package com.limyel.hammer.modules.sys.dto;
+package com.limyel.hammer.modules.sys.model.request;
 
 import lombok.Data;
 

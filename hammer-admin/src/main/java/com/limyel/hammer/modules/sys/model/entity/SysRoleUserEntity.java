@@ -1,4 +1,4 @@
-package com.limyel.hammer.modules.sys.entity;
+package com.limyel.hammer.modules.sys.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.hammer.common.entity.BaseEntity;
@@ -6,14 +6,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 角色菜单关联
+ * 角色用户关联
  *
  * @author limyel
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("sys_role_menu")
-public class SysRoleMenuEntity extends BaseEntity {
+@TableName("sys_role_user")
+public class SysRoleUserEntity extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,8 +23,8 @@ public class SysRoleMenuEntity extends BaseEntity {
     private Long roleId;
 
     /**
-     * 菜单ID
+     * 用户ID
      */
-    private Long menuId;
+    private Long userId;
 
 }

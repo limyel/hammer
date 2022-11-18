@@ -1,7 +1,7 @@
 package com.limyel.hammer.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.limyel.hammer.modules.sys.entity.SysRoleEntity;
+import com.limyel.hammer.modules.sys.model.entity.SysRoleEntity;
 
 /**
  * 角色

@@ -7,7 +7,6 @@ import com.limyel.hammer.common.token.TokensResult;
 import com.limyel.hammer.modules.security.model.entity.SecurityUserDetails;
 import com.limyel.hammer.modules.security.model.request.LoginRequest;
 import com.limyel.hammer.modules.security.service.SecurityService;
-import com.limyel.hammer.modules.sys.entity.SysUserEntity;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

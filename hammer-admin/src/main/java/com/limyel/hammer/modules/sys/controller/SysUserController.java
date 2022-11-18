@@ -2,8 +2,8 @@ package com.limyel.hammer.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.hammer.common.api.Result;
-import com.limyel.hammer.modules.sys.dto.PasswordDTO;
-import com.limyel.hammer.modules.sys.dto.SysUserDTO;
+import com.limyel.hammer.modules.sys.model.request.PasswordDTO;
+import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

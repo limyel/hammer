@@ -2,8 +2,8 @@ package com.limyel.hammer.modules.sys.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.limyel.hammer.modules.sys.dto.SysUserDTO;
-import com.limyel.hammer.modules.sys.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
+import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
 
 import java.util.Set;
 

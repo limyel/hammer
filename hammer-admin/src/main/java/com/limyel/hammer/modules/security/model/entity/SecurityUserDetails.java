@@ -1,6 +1,6 @@
 package com.limyel.hammer.modules.security.model.entity;
 
-import com.limyel.hammer.modules.sys.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

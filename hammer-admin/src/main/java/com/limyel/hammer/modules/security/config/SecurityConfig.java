@@ -1,6 +1,6 @@
 package com.limyel.hammer.modules.security.config;
 
-import com.limyel.hammer.common.filter.JwtAuthenticationTokenFilter;
+import com.limyel.hammer.modules.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

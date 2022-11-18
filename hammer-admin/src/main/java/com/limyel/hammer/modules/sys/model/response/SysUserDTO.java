@@ -1,4 +1,4 @@
-package com.limyel.hammer.modules.sys.dto;
+package com.limyel.hammer.modules.sys.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.limyel.hammer.common.validator.group.AddGroup;

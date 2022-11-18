@@ -1,4 +1,4 @@
-package com.limyel.hammer.modules.sys.entity;
+package com.limyel.hammer.modules.sys.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.hammer.common.entity.BaseEntity;

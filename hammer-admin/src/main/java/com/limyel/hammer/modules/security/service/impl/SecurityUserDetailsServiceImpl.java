@@ -3,7 +3,7 @@ package com.limyel.hammer.modules.security.service.impl;
 import com.limyel.hammer.common.exception.HammerException;
 import com.limyel.hammer.common.exception.SysErrorCode;
 import com.limyel.hammer.modules.security.model.entity.SecurityUserDetails;
-import com.limyel.hammer.modules.sys.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
