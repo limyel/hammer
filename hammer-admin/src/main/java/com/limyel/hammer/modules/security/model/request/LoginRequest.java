@@ -2,6 +2,9 @@ package com.limyel.hammer.modules.security.model.request;
 
 import lombok.Data;
 
+/**
+ * @author limyel
+ */
 @Data
 public class LoginRequest {
 

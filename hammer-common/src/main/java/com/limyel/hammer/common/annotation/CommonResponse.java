@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.*;
 
+/**
+ * @author limyel
+ */
 @RestController
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

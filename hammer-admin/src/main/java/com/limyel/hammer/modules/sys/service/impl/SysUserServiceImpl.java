@@ -31,7 +31,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
     public IPage<SysUserDTO> list(Integer pageNum, Integer pageSize) {
         Page<SysUserDTO> page = Page.of(pageNum, pageSize);
 
-        return this.sysUserDao.selectDTOByPage(page);
+        return this.sysUserDao.selectDtoByPage(page);
     }
 
     @Override

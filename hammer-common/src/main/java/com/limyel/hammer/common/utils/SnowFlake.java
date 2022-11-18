@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * @author limyel
+ */
 @Data
 @Component
 public class SnowFlake {
@@ -43,8 +46,7 @@ public class SnowFlake {
     private void init() {
         this.maxWorkerId = ~(-1L << this.workerIdBits);
         this.maxDatacenterId = ~(-1L << this.datacenterIdBits);
-        if ((this.datacenterId > this.maxDatacenterId || this.datacenterId < 0)
-                || (this.workerId > this.maxWorkerId || this.workerId < 0)) {
+        if (this.checkDatacenterId() || this.checkWorkerId()) {
             throw new HammerException(ErrorCode.SNOW_FLAKE_DATACENTER_WORKER_ID_ERROR);
         }
     }
@@ -78,5 +80,13 @@ public class SnowFlake {
             timestamp = System.currentTimeMillis();
         }
         return timestamp;
+    }
+
+    private boolean checkDatacenterId() {
+        return this.datacenterId > this.maxDatacenterId || this.datacenterId < 0;
+    }
+
+    private boolean checkWorkerId() {
+        return this.workerId > this.maxWorkerId || this.workerId < 0;
     }
 }

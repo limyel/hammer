@@ -10,11 +10,16 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author limyel
+ */
 @Component
 public class RedisUtil {
 
-    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 默认过期时长24小时
@@ -24,7 +29,7 @@ public class RedisUtil {
     /**
      * 过期时长1小时
      */
-    public final static long HOUR_ONE_EXPIRE = 60 * 60 * 1L;
+    public final static long HOUR_ONE_EXPIRE = (long) 60 * 60;
 
     /**
      * 过期时长6小时

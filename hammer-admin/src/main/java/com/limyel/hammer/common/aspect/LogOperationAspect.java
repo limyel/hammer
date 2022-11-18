@@ -14,16 +14,24 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
+/**
+ * @author limyel
+ */
 @Aspect
 @Component
 public class LogOperationAspect {
 
-    @Autowired
     private SysLogOperationService sysLogOperationService;
+
+    @Autowired
+    public void setSysLogOperationService(SysLogOperationService sysLogOperationService) {
+        this.sysLogOperationService = sysLogOperationService;
+    }
 
     @Pointcut("@annotation(com.limyel.hammer.common.annotation.LogOperation)")
     public void logPointCut() {
@@ -68,10 +76,11 @@ public class LogOperationAspect {
         log.setRequestTime((int) time);
 
         HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
-        log.setRequestUri(request.getRequestURI());
-        log.setIp(request.getRemoteAddr());
-        log.setRequestMethod(request.getMethod());
-
+        if (!ObjectUtils.isEmpty(request)) {
+            log.setRequestUri(request.getRequestURI());
+            log.setIp(request.getRemoteAddr());
+            log.setRequestMethod(request.getMethod());
+        }
 
         // 请求参数
         Object[] args = joinPoint.getArgs();

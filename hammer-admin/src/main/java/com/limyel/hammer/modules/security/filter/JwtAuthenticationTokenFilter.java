@@ -6,7 +6,7 @@ import com.limyel.hammer.common.exception.HammerException;
 import com.limyel.hammer.common.exception.error.ErrorCode;
 import com.limyel.hammer.common.token.DoubleToken;
 import com.limyel.hammer.modules.security.model.entity.SecurityUserDetails;
-import com.limyel.hammer.modules.sys.service.SysUserService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,20 +23,26 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
+/**
+ * @author limyel
+ */
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private SysUserService sysUserService;
-
-    @Autowired
     private DoubleToken doubleToken;
-
     @Autowired
+    public void setDoubleToken(DoubleToken doubleToken) {
+        this.doubleToken = doubleToken;
+    }
+
     private UserDetailsService userDetailsService;
+    @Autowired
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws ServletException, IOException {
         Optional<Map<String, Claim>> optionalClaims = Optional.ofNullable(this.resolveToken(request));
         if (optionalClaims.isPresent()) {
             Map<String, Claim> claims = optionalClaims.get();
@@ -59,7 +65,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             return null;
         }
         String[] splits = authorization.split(" ");
-        if (splits.length != 2) {
+        if (splits.length != TokenConstant.AUTHORIZATION_SPLIT_LEN) {
             throw new HammerException(ErrorCode.JWT_RESOLVE_FAILED);
         }
         String scheme = splits[0];

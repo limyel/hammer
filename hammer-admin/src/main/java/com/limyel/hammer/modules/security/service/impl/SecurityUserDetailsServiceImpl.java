@@ -13,11 +13,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * @author limyel
+ */
 @Service
 public class SecurityUserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

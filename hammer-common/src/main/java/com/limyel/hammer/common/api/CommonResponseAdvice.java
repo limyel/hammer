@@ -2,6 +2,7 @@ package com.limyel.hammer.common.api;
 
 import com.limyel.hammer.common.annotation.CommonResponse;
 import com.limyel.hammer.common.annotation.IgnoreCommonResponse;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -9,19 +10,23 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+/**
+ * @author limyel
+ */
 @RestControllerAdvice
 public class CommonResponseAdvice implements ResponseBodyAdvice {
 
     @Override
-    public boolean supports(MethodParameter returnType, Class converterType) {
+    public boolean supports(MethodParameter returnType, @NotNull Class converterType) {
         // 对 @CommonResponse 注解对类进行处理，对 @IgnoreCommonResponse 注解对类、方法放行
         return returnType.getDeclaringClass().isAnnotationPresent(CommonResponse.class)
-                && !returnType.getDeclaringClass().isAnnotationPresent(IgnoreCommonResponse.class)
-                && !returnType.getMethod().isAnnotationPresent(IgnoreCommonResponse.class);
+                && !returnType.getDeclaringClass().isAnnotationPresent(IgnoreCommonResponse.class);
     }
 
     @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType,
+                                  @NotNull Class selectedConverterType, @NotNull ServerHttpRequest request,
+                                  @NotNull ServerHttpResponse response) {
         if (body instanceof Result) {
             return body;
         }

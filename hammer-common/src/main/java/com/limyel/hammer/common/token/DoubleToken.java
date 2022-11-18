@@ -16,13 +16,16 @@ import org.springframework.util.StringUtils;
 import java.util.Date;
 import java.util.Map;
 
-public class DoubleToken extends Token {
+/**
+ * @author limyel
+ */
+public class DoubleToken extends AbstractToken {
 
-    private int accessExpire;
+    private final int accessExpire;
 
-    private int refreshExpire;
+    private final int refreshExpire;
 
-    private Algorithm algorithm;
+    private final Algorithm algorithm;
 
     private JWTVerifier accessVerifier;
 
@@ -33,9 +36,9 @@ public class DoubleToken extends Token {
     /**
      * 传入加密算法、双 token 过期时间
      *
-     * @param algorithm
-     * @param accessExpire
-     * @param refreshExpire
+     * @param algorithm 加密算法
+     * @param accessExpire 认证 token 超时时间
+     * @param refreshExpire 刷新 token 超时时间
      */
     public DoubleToken(Algorithm algorithm, int accessExpire, int refreshExpire, String tokenHeaderName, String tokenType) {
         super(tokenHeaderName, tokenType);
@@ -48,9 +51,9 @@ public class DoubleToken extends Token {
     /**
      * 不传入加密算法，传入密钥，默认使用 HMAC256 算法
      *
-     * @param secret
-     * @param accessExpire
-     * @param refreshExpire
+     * @param secret 密钥
+     * @param accessExpire 认证 token 超时时间
+     * @param refreshExpire 刷新 token 超时时间
      */
     public DoubleToken(String secret, int accessExpire, int refreshExpire, String tokenHeaderName, String tokenType) {
         super(tokenHeaderName, tokenType);
@@ -79,7 +82,7 @@ public class DoubleToken extends Token {
     }
 
     public Map<String, Claim> decodeAccessToken(String token) {
-        DecodedJWT jwt = this.refreshVerifier.verify(token);
+        DecodedJWT jwt = this.accessVerifier.verify(token);
         this.checkTokenExpired(jwt.getExpiresAt());
         this.checkTokenType(jwt.getClaim("type").asString(), TokenConstant.ACCESS_TOKEN);
         this.checkTokenScope(jwt.getClaim("scope").asString());
@@ -124,7 +127,7 @@ public class DoubleToken extends Token {
 
     private void checkTokenScope(String scope) {
         if (!StringUtils.hasText(scope) || !scope.equals(TokenConstant.HAMMER_SCOPE)) {
-            throw new HammerException(ErrorCode.JWT_SCOPR_INVALID);
+            throw new HammerException(ErrorCode.JWT_SCOPE_INVALID);
         }
     }
 

@@ -18,8 +18,18 @@ import java.util.Set;
 @Mapper
 public interface SysUserDao extends BaseMapper<SysUserEntity> {
 
-    IPage<SysUserDTO> selectDTOByPage(Page<SysUserDTO> page);
+    /**
+     * 系统用户分页
+     * @param page 分页信息
+     * @return 系统用户 dto 分页
+     */
+    IPage<SysUserDTO> selectDtoByPage(Page<SysUserDTO> page);
 
+    /**
+     * 通过用户 id 获取菜单权限集合
+     * @param userId 用户 id
+     * @return 菜单权限集合
+     */
     @Select("SELECT DISTINCT t1.permissions "
             + "FROM sys_menu t1 "
             + " LEFT JOIN sys_role_menu t2 ON t1.id = t2.menu_id "

@@ -2,12 +2,15 @@ package com.limyel.hammer.common.exception;
 
 import com.limyel.hammer.common.exception.error.ErrorCodeInterface;
 
+/**
+ * @author limyel
+ */
 public class HammerException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    private int code;
+    private final int code;
 
-    private String msg;
+    private final String msg;
 
     public HammerException(int code, String msg) {
         this.code = code;

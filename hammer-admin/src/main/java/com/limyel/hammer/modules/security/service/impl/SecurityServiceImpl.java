@@ -7,7 +7,6 @@ import com.limyel.hammer.common.token.TokensResult;
 import com.limyel.hammer.modules.security.model.entity.SecurityUserDetails;
 import com.limyel.hammer.modules.security.model.request.LoginRequest;
 import com.limyel.hammer.modules.security.service.SecurityService;
-import com.limyel.hammer.modules.sys.service.SysUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,17 +16,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author limyel
+ */
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
-    @Autowired
     private AuthenticationManager authenticationManager;
-
     @Autowired
-    private SysUserService sysUserService;
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
 
-    @Autowired
     private DoubleToken doubleToken;
+    @Autowired
+    public void setDoubleToken(DoubleToken doubleToken) {
+        this.doubleToken = doubleToken;
+    }
 
     @Override
     public TokensResult doLogin(LoginRequest loginRequest) {

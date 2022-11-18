@@ -7,12 +7,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ObjectUtils;
 
+/**
+ * @author limyel
+ */
 @Configuration
 @EnableConfigurationProperties(HammerProperties.class)
 public class HammerConfig {
 
-    @Autowired
     private HammerProperties hammerProperties;
+    @Autowired
+    public void setHammerProperties(HammerProperties hammerProperties) {
+        this.hammerProperties = hammerProperties;
+    }
 
     @Bean
     public DoubleToken doubleToken() {
@@ -21,7 +27,7 @@ public class HammerConfig {
         Integer refreshExpire = hammerProperties.getTokenRefreshExpire();
         if (ObjectUtils.isEmpty(accessExpire)) {
             // 默认一小时过期
-            accessExpire = 60 * 60 * 1;
+            accessExpire = 60 * 60;
         }
         if (ObjectUtils.isEmpty(refreshExpire)) {
             // 默认一个月过期

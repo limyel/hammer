@@ -8,6 +8,7 @@ import java.util.Date;
 
 /**
  * 公共字段填充
+ * @author limyel
  */
 @Component
 public class FieldMetaObjectHandler implements MetaObjectHandler {

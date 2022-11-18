@@ -2,6 +2,9 @@ package com.limyel.hammer.common.token;
 
 import lombok.Data;
 
+/**
+ * @author limyel
+ */
 @Data
 public class TokensResult {
 

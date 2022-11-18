@@ -1,19 +1,20 @@
 package com.limyel.hammer.common.token;
 
-import com.auth0.jwt.interfaces.Claim;
 import lombok.NoArgsConstructor;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
+/**
+ * @author limyel
+ */
 @NoArgsConstructor
-public abstract class Token {
+public abstract class AbstractToken {
 
     protected String tokenHeaderName;
 
     protected String tokenType;
 
-    public Token(String tokenHeaderName, String tokenType) {
+    public AbstractToken(String tokenHeaderName, String tokenType) {
         this.tokenHeaderName = tokenHeaderName;
         this.tokenType = tokenType;
     }

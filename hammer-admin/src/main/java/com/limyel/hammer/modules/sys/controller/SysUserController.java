@@ -19,14 +19,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/sys/user")
 public class SysUserController {
 
-    @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
 
     /**
      * 分页
-     * @param pageNum
-     * @param pageSize
-     * @return
+     * @param pageNum 页数
+     * @param pageSize 每页数量
+     * @return 系统用户分页
      */
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('sys:user:list')")
@@ -39,8 +42,8 @@ public class SysUserController {
 
     /**
      * 修改密码
-     * @param passwordDTO
-     * @return
+     * @param passwordDTO 修改密码请求体
+     * @return null
      */
     @PostMapping("/password")
     public Result<?> password(@Validated @RequestBody PasswordDTO passwordDTO) {
