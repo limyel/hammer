@@ -1,7 +1,6 @@
 package com.limyel.hammer.common.api;
 
 import com.limyel.hammer.common.annotation.CommonResponse;
-import com.limyel.hammer.common.annotation.IgnoreCommonResponse;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -18,9 +17,8 @@ public class CommonResponseAdvice implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter returnType, @NotNull Class converterType) {
-        // 对 @CommonResponse 注解对类进行处理，对 @IgnoreCommonResponse 注解对类、方法放行
-        return returnType.getDeclaringClass().isAnnotationPresent(CommonResponse.class)
-                && !returnType.getDeclaringClass().isAnnotationPresent(IgnoreCommonResponse.class);
+        // 对 @CommonResponse 注解对类进行处理
+        return returnType.getDeclaringClass().isAnnotationPresent(CommonResponse.class);
     }
 
     @Override

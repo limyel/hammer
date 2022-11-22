@@ -10,6 +10,7 @@ public enum SysErrorCode implements ErrorCodeInterface {
     SYS_USER_NOT_FOUND(11001, "该系统用户不存在"),
     // 用户登录失败
     SYS_USER_LOGIN_FAILED(11002, "系统用户登录失败"),
+    SYS_USER_GET_FAILD(11003, "当前系统用户获取失败"),
     ;
 
     private final int code;
