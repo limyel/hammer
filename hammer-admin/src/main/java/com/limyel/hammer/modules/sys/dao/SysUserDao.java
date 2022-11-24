@@ -3,8 +3,8 @@ package com.limyel.hammer.modules.sys.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
 import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -23,7 +23,7 @@ public interface SysUserDao extends BaseMapper<SysUserEntity> {
      * @param page 分页信息
      * @return 系统用户 dto 分页
      */
-    IPage<SysUserDTO> selectDtoByPage(Page<SysUserDTO> page);
+    IPage<SysUserResponse> selectByPage(Page<SysUserResponse> page);
 
     /**
      * 通过用户 id 获取菜单权限集合

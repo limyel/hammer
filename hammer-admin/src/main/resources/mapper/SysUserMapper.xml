@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.limyel.hammer.modules.sys.dao.SysUserDao">
 
-    <resultMap id="SysUserDTO" type="com.limyel.hammer.modules.sys.model.response.SysUserDTO">
+    <resultMap id="SysUserDTO" type="com.limyel.hammer.modules.sys.model.response.SysUserResponse">
         <result property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="avatar" column="avatar"/>
@@ -15,7 +15,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <select id="selectDtoByPage" resultMap="SysUserDTO">
+    <select id="selectByPage" resultMap="SysUserDTO">
         select t1.*, t2.name dept_name from sys_user t1
             left join sys_dept t2 on t1.dept_id = t2.id
             order by t1.create_time desc

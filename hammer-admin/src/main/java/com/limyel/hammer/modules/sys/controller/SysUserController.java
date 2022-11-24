@@ -3,7 +3,7 @@ package com.limyel.hammer.modules.sys.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.hammer.common.api.Result;
 import com.limyel.hammer.modules.sys.model.request.PasswordDTO;
-import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
+import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,10 +33,10 @@ public class SysUserController {
      */
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('sys:user:list')")
-    public Result<IPage<SysUserDTO>> list(
+    public Result<IPage<SysUserResponse>> list(
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize) {
-        IPage<SysUserDTO> page = sysUserService.list(pageNum, pageSize);
+        IPage<SysUserResponse> page = sysUserService.list(pageNum, pageSize);
         return Result.success(page);
     }
 

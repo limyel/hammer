@@ -2,8 +2,8 @@ package com.limyel.hammer.modules.sys.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
 import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 
 import java.util.Set;
 
@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public interface SysUserService extends IService<SysUserEntity> {
 
-    IPage<SysUserDTO> list(Integer pageNum, Integer pageSize);
+    IPage<SysUserResponse> list(Integer pageNum, Integer pageSize);
 
     SysUserEntity getByUsername(String username);
 

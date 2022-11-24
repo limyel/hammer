@@ -14,27 +14,18 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class SysUserDTO implements Serializable {
+public class SysUserResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
      * ID
      */
-    @NotNull(message = "{id.require}", groups = UpdateGroup.class)
     private Long id;
 
     /**
      * 用户名
      */
-    @NotBlank(message = "{sysuser.password.require}", groups = {AddGroup.class, UpdateGroup.class})
     private String username;
-
-    /**
-     * 密码
-     */
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @NotBlank(message = "{sysuser.password.require}", groups = AddGroup.class)
-    private String password;
 
     /**
      * 头像
@@ -44,10 +35,8 @@ public class SysUserDTO implements Serializable {
     /**
      * 性别
      */
-    @Range(min = 0, max = 2, message = "{sysuser.gender.range}", groups = {AddGroup.class, UpdateGroup.class})
     private Integer gender;
 
-    @Email(message = "{sysuser.email.error}", groups = {AddGroup.class, UpdateGroup.class})
     private String email;
 
     /**
@@ -58,19 +47,16 @@ public class SysUserDTO implements Serializable {
     /**
      * 部门ID
      */
-    @NotNull(message = "{sysuser.deptId.require}", groups = {AddGroup.class, UpdateGroup.class})
     private Long deptId;
 
     /**
      * 超级管理员
      */
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Boolean superAdmin;
 
     /**
      * 状态
      */
-    @Range(min = 0, max = 1, groups = {AddGroup.class, UpdateGroup.class})
     private Integer status;
 
     /**
@@ -86,7 +72,6 @@ public class SysUserDTO implements Serializable {
     /**
      * 创建时间
      */
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date createTime;
 
 

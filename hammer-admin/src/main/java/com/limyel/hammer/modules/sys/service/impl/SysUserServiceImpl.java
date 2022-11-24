@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.limyel.hammer.common.redis.RedisUtil;
 import com.limyel.hammer.modules.sys.dao.SysUserDao;
-import com.limyel.hammer.modules.sys.model.response.SysUserDTO;
 import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -27,11 +29,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
     @Autowired
     private SysUserDao sysUserDao;
 
-    @Override
-    public IPage<SysUserDTO> list(Integer pageNum, Integer pageSize) {
-        Page<SysUserDTO> page = Page.of(pageNum, pageSize);
+    @Autowired
+    private RedisUtil redisUtil;
 
-        return this.sysUserDao.selectDtoByPage(page);
+    @Override
+    @Cacheable(value = "list", keyGenerator = "keyGenerator")
+    public IPage<SysUserResponse> list(Integer pageNum, Integer pageSize) {
+        Page<SysUserResponse> page = Page.of(pageNum, pageSize);
+
+        return this.sysUserDao.selectByPage(page);
     }
 
     @Override
