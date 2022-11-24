@@ -48,11 +48,6 @@ public class SysUserEntity extends BaseEntity {
     private String mobile;
 
     /**
-     * 部门ID
-     */
-    private Long deptId;
-
-    /**
      * 超级管理员，0:否 1:是
      */
     private Boolean superAdmin;

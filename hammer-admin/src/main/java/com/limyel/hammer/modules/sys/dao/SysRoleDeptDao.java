@@ -1,7 +1,6 @@
 package com.limyel.hammer.modules.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.limyel.hammer.modules.sys.model.entity.SysRoleDeptEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
