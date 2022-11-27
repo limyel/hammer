@@ -1,8 +1,13 @@
 package com.limyel.hammer.modules.sys.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.limyel.hammer.modules.sys.model.entity.SysMenuEntity;
-import com.limyel.hammer.modules.sys.model.request.SysMenuDTO;
+import com.limyel.hammer.modules.sys.model.request.SysMenuRequest;
+import com.limyel.hammer.modules.sys.model.response.SysMenuResponse;
+
+import java.util.List;
 
 /**
  * 菜单
@@ -11,6 +16,14 @@ import com.limyel.hammer.modules.sys.model.request.SysMenuDTO;
  */
 public interface SysMenuService extends IService<SysMenuEntity> {
 
-    void add(SysMenuDTO dto);
+    void add(SysMenuRequest sysMenuRequest);
+
+    List<SysMenuResponse> listSubMenu(Long id);
+
+    void update(SysMenuRequest sysMenuRequest);
+
+    IPage<SysMenuResponse> listByPage(Integer pageNum, Integer pageSize);
+
+    SysMenuResponse getById(Long id);
 
 }

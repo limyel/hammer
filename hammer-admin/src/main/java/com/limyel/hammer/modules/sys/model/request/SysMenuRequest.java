@@ -2,11 +2,10 @@ package com.limyel.hammer.modules.sys.model.request;
 
 import lombok.Data;
 
-/**
- * @author limyel
- */
 @Data
-public class SysMenuDTO {
+public class SysMenuRequest {
+
+    private Long id;
 
     private String name;
 

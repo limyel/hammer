@@ -6,7 +6,7 @@ package com.limyel.hammer.common.exception.error;
 
 public enum ErrorCode implements ErrorCodeInterface {
     // 失败
-    FAIL(9999, "操作失败"),
+    FAIL(90001, "操作失败"),
     UNKNOWN_ERROR(99999,"未知错误"),
     SNOW_FLAKE_DATACENTER_WORKER_ID_ERROR(91101, "datacenterId、workerId 值异常"),
     SNOW_FLAKE_TIMESTAMP_ERROR(91102, "时间戳值异常"),

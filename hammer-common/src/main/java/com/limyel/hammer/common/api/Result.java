@@ -1,6 +1,7 @@
 package com.limyel.hammer.common.api;
 
 import com.limyel.hammer.common.exception.HammerException;
+import com.limyel.hammer.common.exception.error.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,6 +47,10 @@ public class Result<T> {
 
     public static <T> Result<T> fail(T data) {
         return build(FAIL_CODE, FAIL_MSG, data);
+    }
+
+    public static Result<?> fail(ErrorCode errorCode) {
+        return build(errorCode.code(), errorCode.msg());
     }
 
     public static <T> Result<T> failMsg(String msg) {

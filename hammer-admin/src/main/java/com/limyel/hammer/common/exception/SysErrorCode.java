@@ -11,6 +11,8 @@ public enum SysErrorCode implements ErrorCodeInterface {
     // 用户登录失败
     SYS_USER_LOGIN_FAILED(11002, "系统用户登录失败"),
     SYS_USER_GET_FAILD(11003, "当前系统用户获取失败"),
+
+    SYS_MENU_SUB_MENU_EXIST(12001, "先删除子菜单或按钮"),
     ;
 
     private final int code;
