@@ -51,6 +51,7 @@ public class SysMenuController {
     @PreAuthorize("hasAuthority('sys:menu:update')")
     public Result<?> update(@RequestBody SysMenuRequest sysMenuRequest) {
         sysMenuService.update(sysMenuRequest);
+
         return Result.success();
     }
 
@@ -61,6 +62,7 @@ public class SysMenuController {
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize
     ) {
         IPage<SysMenuResponse> response = sysMenuService.listByPage(pageNum, pageSize);
+
         return Result.success(response);
     }
 
@@ -68,6 +70,7 @@ public class SysMenuController {
     @PreAuthorize("hasAuthority('sys:menu:get')")
     public Result<SysMenuResponse> get(@PathVariable("id") Long id) {
         SysMenuResponse response = sysMenuService.getById(id);
+
         return Result.success(response);
     }
 }
