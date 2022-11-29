@@ -1,6 +1,7 @@
 package com.limyel.hammer.modules.sys.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.limyel.hammer.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_dict_data")
-public class SysDictDataEntity extends SysBaseEntity {
+public class SysDictDataEntity extends BaseEntity {
 
     /**
      * 字典类型ID

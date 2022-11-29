@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_menu")
-public class SysMenuEntity extends SysBaseEntity {
+public class SysMenuEntity extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
