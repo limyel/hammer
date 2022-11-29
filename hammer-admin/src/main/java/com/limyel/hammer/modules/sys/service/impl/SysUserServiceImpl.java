@@ -13,6 +13,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -52,6 +53,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
     public Set<String> getMenuPermissionsById(Long sysUserId) {
         Set<String> permissions = sysUserDao.selectMenuPermissionsById(sysUserId);
         return permissions.stream()
+                .filter(permission -> !ObjectUtils.isEmpty(permission))
                 .map(permission -> permission.split(","))
                 .flatMap(Arrays::stream)
                 .collect(Collectors.toSet());

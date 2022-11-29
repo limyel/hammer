@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author limyel
  */
-@Controller
+@RestController
 @RequestMapping("/sys/menu")
 public class SysMenuController {
 
