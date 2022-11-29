@@ -6,10 +6,8 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.limyel.hammer.common.utils.BeanUtil;
 import com.limyel.hammer.common.utils.PageUtil;
-import com.limyel.hammer.modules.security.utils.AuthenticationUtil;
 import com.limyel.hammer.modules.sys.dao.SysMenuDao;
 import com.limyel.hammer.modules.sys.model.entity.SysMenuEntity;
-import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
 import com.limyel.hammer.modules.sys.model.request.SysMenuRequest;
 import com.limyel.hammer.modules.sys.model.response.SysMenuResponse;
 import com.limyel.hammer.modules.sys.service.SysMenuService;
@@ -34,7 +32,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> i
     @Override
     public void add(SysMenuRequest sysMenuRequest) {
         SysMenuEntity sysMenu = BeanUtil.copyProperties(sysMenuRequest, SysMenuEntity.class);
-        sysMenu.create();
         sysMenuDao.insert(sysMenu);
     }
 
@@ -49,7 +46,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> i
     @Override
     public void update(SysMenuRequest sysMenuRequest) {
         SysMenuEntity sysMenu = BeanUtil.copyProperties(sysMenuRequest, SysMenuEntity.class);
-        sysMenu.update();
         sysMenuDao.updateById(sysMenu);
     }
 
