@@ -1,7 +1,5 @@
 package com.limyel.hammer.common.token;
 
-import cn.hutool.core.date.DateField;
-import cn.hutool.core.date.DateUtil;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
@@ -11,6 +9,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.limyel.hammer.common.constant.TokenConstant;
 import com.limyel.hammer.common.exception.HammerException;
 import com.limyel.hammer.common.exception.error.ErrorCode;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -156,7 +155,7 @@ public class DoubleToken extends AbstractToken {
 
     private Date getExpireDate(int expireSecond) {
         Date currentDate = new Date();
-        return DateUtil.offset(currentDate, DateField.SECOND, expireSecond).toJdkDate();
+        return DateUtils.addSeconds(currentDate, expireSecond);
     }
 
 }

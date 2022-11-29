@@ -2,7 +2,7 @@ package com.limyel.hammer.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.hammer.common.api.Result;
-import com.limyel.hammer.modules.sys.model.request.PasswordDTO;
+import com.limyel.hammer.modules.sys.model.request.PasswordRequest;
 import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class SysUserController {
      * @return null
      */
     @PostMapping("/password")
-    public Result<?> password(@Validated @RequestBody PasswordDTO passwordDTO) {
+    public Result<?> password(@Validated @RequestBody PasswordRequest passwordDTO) {
         return null;
     }
 

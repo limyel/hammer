@@ -1,12 +1,14 @@
 package com.limyel.hammer.common.aspect;
 
-import cn.hutool.json.JSONUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.limyel.hammer.common.annotation.LogOperation;
 import com.limyel.hammer.common.constant.OperationStatusConstant;
 import com.limyel.hammer.common.utils.ExceptionUtil;
 import com.limyel.hammer.common.utils.HttpContextUtil;
 import com.limyel.hammer.modules.log.entity.SysLogOperationEntity;
 import com.limyel.hammer.modules.log.service.SysLogOperationService;
+import org.apache.catalina.mapper.Mapper;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,6 +27,9 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class LogOperationAspect {
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private SysLogOperationService sysLogOperationService;
 
@@ -84,7 +89,7 @@ public class LogOperationAspect {
 
         // 请求参数
         Object[] args = joinPoint.getArgs();
-        String params = JSONUtil.toJsonStr(args[0]);
+        String params = objectMapper.writeValueAsString(args[0]);
         log.setRequestParams(params);
 
         sysLogOperationService.save(log);

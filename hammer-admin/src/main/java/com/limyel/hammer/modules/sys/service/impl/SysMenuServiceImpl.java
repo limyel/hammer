@@ -1,10 +1,10 @@
 package com.limyel.hammer.modules.sys.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.limyel.hammer.common.utils.BeanUtil;
 import com.limyel.hammer.common.utils.PageUtil;
 import com.limyel.hammer.modules.security.utils.AuthenticationUtil;
 import com.limyel.hammer.modules.sys.dao.SysMenuDao;
@@ -28,11 +28,8 @@ import java.util.List;
 @Service
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> implements SysMenuService {
 
-    private SysMenuDao sysMenuDao;
     @Autowired
-    public void setSysMenuDao(SysMenuDao sysMenuDao) {
-        this.sysMenuDao = sysMenuDao;
-    }
+    private SysMenuDao sysMenuDao;
 
     @Override
     public void add(SysMenuRequest sysMenuRequest) {
