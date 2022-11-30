@@ -30,6 +30,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> i
     private SysMenuDao sysMenuDao;
 
     @Override
+    public IPage<SysMenuResponse> listByPage(Integer pageNum, Integer pageSize) {
+        Page<SysMenuEntity> page = Page.of(pageNum, pageSize);
+        sysMenuDao.selectPage(page, null);
+        return PageUtil.copyRecords(page, SysMenuResponse.class);
+    }
+
+    @Override
     public void add(SysMenuRequest sysMenuRequest) {
         SysMenuEntity sysMenu = BeanUtil.copyProperties(sysMenuRequest, SysMenuEntity.class);
         sysMenuDao.insert(sysMenu);
@@ -47,13 +54,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> i
     public void update(SysMenuRequest sysMenuRequest) {
         SysMenuEntity sysMenu = BeanUtil.copyProperties(sysMenuRequest, SysMenuEntity.class);
         sysMenuDao.updateById(sysMenu);
-    }
-
-    @Override
-    public IPage<SysMenuResponse> listByPage(Integer pageNum, Integer pageSize) {
-        Page<SysMenuEntity> page = Page.of(pageNum, pageSize);
-        sysMenuDao.selectPage(page, null);
-        return PageUtil.copyRecords(page, SysMenuResponse.class);
     }
 
     @Override

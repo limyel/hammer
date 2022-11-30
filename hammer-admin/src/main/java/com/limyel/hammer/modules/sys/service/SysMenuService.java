@@ -16,13 +16,13 @@ import java.util.List;
  */
 public interface SysMenuService extends IService<SysMenuEntity> {
 
+    IPage<SysMenuResponse> listByPage(Integer pageNum, Integer pageSize);
+
     void add(SysMenuRequest sysMenuRequest);
 
     List<SysMenuResponse> listSubMenu(Long id);
 
     void update(SysMenuRequest sysMenuRequest);
-
-    IPage<SysMenuResponse> listByPage(Integer pageNum, Integer pageSize);
 
     SysMenuResponse getById(Long id);
 

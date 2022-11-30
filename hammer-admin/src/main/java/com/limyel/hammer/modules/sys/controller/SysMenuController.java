@@ -28,6 +28,17 @@ public class SysMenuController {
         this.sysMenuService = sysMenuService;
     }
 
+    @GetMapping
+    @PreAuthorize("hasAuthority('sys:menu:list')")
+    public Result<?> list(
+            @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize
+    ) {
+        IPage<SysMenuResponse> response = sysMenuService.listByPage(pageNum, pageSize);
+
+        return Result.success(response);
+    }
+
     @PostMapping
     @PreAuthorize("hasAuthority('sys:menu:add')")
     public Result<?> add(@RequestBody SysMenuRequest sysMenuRequest) {
@@ -53,17 +64,6 @@ public class SysMenuController {
         sysMenuService.update(sysMenuRequest);
 
         return Result.success();
-    }
-
-    @GetMapping
-    @PreAuthorize("hasAuthority('sys:menu:list')")
-    public Result<?> list(
-            @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-            @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize
-    ) {
-        IPage<SysMenuResponse> response = sysMenuService.listByPage(pageNum, pageSize);
-
-        return Result.success(response);
     }
 
     @GetMapping("/{id}")
