@@ -39,10 +39,26 @@ public class SysMenuController {
         return Result.success(response);
     }
 
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('sys:menu:get')")
+    public Result<SysMenuResponse> get(@PathVariable("id") Long id) {
+        SysMenuResponse response = sysMenuService.getById(id);
+
+        return Result.success(response);
+    }
+
     @PostMapping
     @PreAuthorize("hasAuthority('sys:menu:add')")
     public Result<?> add(@RequestBody SysMenuRequest sysMenuRequest) {
         sysMenuService.add(sysMenuRequest);
+
+        return Result.success();
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAuthority('sys:menu:update')")
+    public Result<?> update(@RequestBody SysMenuRequest sysMenuRequest) {
+        sysMenuService.update(sysMenuRequest);
 
         return Result.success();
     }
@@ -56,21 +72,5 @@ public class SysMenuController {
         }
         sysMenuService.removeById(id);
         return Result.success();
-    }
-
-    @PutMapping
-    @PreAuthorize("hasAuthority('sys:menu:update')")
-    public Result<?> update(@RequestBody SysMenuRequest sysMenuRequest) {
-        sysMenuService.update(sysMenuRequest);
-
-        return Result.success();
-    }
-
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('sys:menu:get')")
-    public Result<SysMenuResponse> get(@PathVariable("id") Long id) {
-        SysMenuResponse response = sysMenuService.getById(id);
-
-        return Result.success(response);
     }
 }

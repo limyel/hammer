@@ -36,7 +36,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleEntity> i
     @Override
     public void add(SysRoleRequest sysRoleRequest) {
         SysRoleEntity sysRole = BeanUtil.copyProperties(sysRoleRequest, SysRoleEntity.class);
-
+        sysRoleDao.insert(sysRole);
     }
 
     @Override

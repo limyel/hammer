@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class SysUserDTO implements Serializable {
+public class SysUserRequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -47,6 +47,9 @@ public class SysUserDTO implements Serializable {
     @Range(min = 0, max = 2, message = "{sysuser.gender.range}", groups = {AddGroup.class, UpdateGroup.class})
     private Integer gender;
 
+    /**
+     * 邮箱
+     */
     @Email(message = "{sysuser.email.error}", groups = {AddGroup.class, UpdateGroup.class})
     private String email;
 
@@ -54,12 +57,6 @@ public class SysUserDTO implements Serializable {
      * 手机号
      */
     private String mobile;
-
-    /**
-     * 部门ID
-     */
-    @NotNull(message = "{sysuser.deptId.require}", groups = {AddGroup.class, UpdateGroup.class})
-    private Long deptId;
 
     /**
      * 超级管理员
@@ -77,17 +74,5 @@ public class SysUserDTO implements Serializable {
      * 角色ID列表
      */
     private List<Long> roleIdList;
-
-    /**
-     * 部门名称
-     */
-    private String deptName;
-
-    /**
-     * 创建时间
-     */
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Date createTime;
-
 
 }

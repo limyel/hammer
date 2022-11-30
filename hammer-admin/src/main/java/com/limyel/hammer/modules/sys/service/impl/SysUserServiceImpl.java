@@ -5,8 +5,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.limyel.hammer.common.redis.RedisUtil;
+import com.limyel.hammer.common.utils.BeanUtil;
 import com.limyel.hammer.modules.sys.dao.SysUserDao;
+import com.limyel.hammer.modules.sys.model.entity.SysRoleEntity;
 import com.limyel.hammer.modules.sys.model.entity.SysUserEntity;
+import com.limyel.hammer.modules.sys.model.request.SysRoleRequest;
+import com.limyel.hammer.modules.sys.model.request.SysUserRequest;
 import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -39,6 +43,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
         Page<SysUserResponse> page = Page.of(pageNum, pageSize);
 
         return this.sysUserDao.selectByPage(page);
+    }
+
+    @Override
+    public void add(SysUserRequest sysUserRequest) {
+        SysUserEntity sysUser = BeanUtil.copyProperties(sysUserRequest, SysUserEntity.class);
+        sysUserDao.insert(sysUser);
+    }
+
+    @Override
+    public void update(SysUserRequest sysUserRequest) {
+        SysUserEntity sysUser = BeanUtil.copyProperties(sysUserRequest, SysUserEntity.class);
+        sysUserDao.updateById(sysUser);
     }
 
     @Override

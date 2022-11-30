@@ -46,13 +46,6 @@ public class SysRoleController {
         return Result.success();
     }
 
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('sys:role:delete')")
-    public Result<?> delete(@PathVariable("id") Long id) {
-
-        return Result.success();
-    }
-
     @PutMapping
     @PreAuthorize("hasAuthority('sys:menu:update')")
     public Result<?> update(@RequestBody SysRoleRequest sysRoleRequest) {
@@ -60,4 +53,12 @@ public class SysRoleController {
 
         return Result.success();
     }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('sys:role:delete')")
+    public Result<?> delete(@PathVariable("id") Long id) {
+
+        return Result.success();
+    }
+
 }

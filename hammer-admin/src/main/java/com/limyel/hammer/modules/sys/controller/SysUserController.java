@@ -3,6 +3,8 @@ package com.limyel.hammer.modules.sys.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.hammer.common.api.Result;
 import com.limyel.hammer.modules.sys.model.request.PasswordRequest;
+import com.limyel.hammer.modules.sys.model.request.SysRoleRequest;
+import com.limyel.hammer.modules.sys.model.request.SysUserRequest;
 import com.limyel.hammer.modules.sys.model.response.SysUserResponse;
 import com.limyel.hammer.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +39,31 @@ public class SysUserController {
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize) {
         IPage<SysUserResponse> page = sysUserService.list(pageNum, pageSize);
+
         return Result.success(page);
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAuthority('sys:user:add')")
+    public Result<?> add(@RequestBody SysUserRequest sysUserRequest) {
+        sysUserService.add(sysUserRequest);
+
+        return Result.success();
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAuthority('sys:user:update')")
+    public Result<?> update(@RequestBody SysUserRequest sysUserRequest) {
+        sysUserService.update(sysUserRequest);
+
+        return Result.success();
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('sys:role:delete')")
+    public Result<?> delete(@PathVariable("id") Long id) {
+
+        return Result.success();
     }
 
     /**
