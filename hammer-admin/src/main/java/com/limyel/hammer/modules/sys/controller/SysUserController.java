@@ -38,7 +38,7 @@ public class SysUserController {
     public Result<IPage<SysUserResponse>> list(
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") Integer pageSize) {
-        IPage<SysUserResponse> page = sysUserService.list(pageNum, pageSize);
+        IPage<SysUserResponse> page = sysUserService.listByPage(pageNum, pageSize);
 
         return Result.success(page);
     }
@@ -60,7 +60,7 @@ public class SysUserController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('sys:role:delete')")
+    @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result<?> delete(@PathVariable("id") Long id) {
 
         return Result.success();

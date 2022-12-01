@@ -17,7 +17,7 @@ import java.util.Set;
  */
 public interface SysUserService extends IService<SysUserEntity> {
 
-    IPage<SysUserResponse> list(Integer pageNum, Integer pageSize);
+    IPage<SysUserResponse> listByPage(Integer pageNum, Integer pageSize);
 
     void add(SysUserRequest sysUserRequest);
 

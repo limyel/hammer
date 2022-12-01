@@ -16,4 +16,9 @@ import java.util.List;
  */
 public interface SysDictTypeService extends IService<SysDictTypeEntity> {
 
+    IPage<SysDictTypeEntity> listByPage(Integer pageNum, Integer pageSize);
+
+    void add(SysDictTypeEntity sysDictTypeEntity);
+
+    void update(SysDictTypeEntity sysDictTypeEntity);
 }

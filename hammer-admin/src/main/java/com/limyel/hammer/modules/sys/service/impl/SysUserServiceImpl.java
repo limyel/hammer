@@ -39,7 +39,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 
     @Override
     @Cacheable(value = "list", keyGenerator = "keyGenerator")
-    public IPage<SysUserResponse> list(Integer pageNum, Integer pageSize) {
+    public IPage<SysUserResponse> listByPage(Integer pageNum, Integer pageSize) {
         Page<SysUserResponse> page = Page.of(pageNum, pageSize);
 
         return this.sysUserDao.selectByPage(page);
@@ -48,12 +48,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
     @Override
     public void add(SysUserRequest sysUserRequest) {
         SysUserEntity sysUser = BeanUtil.copyProperties(sysUserRequest, SysUserEntity.class);
+
         sysUserDao.insert(sysUser);
     }
 
     @Override
     public void update(SysUserRequest sysUserRequest) {
         SysUserEntity sysUser = BeanUtil.copyProperties(sysUserRequest, SysUserEntity.class);
+
         sysUserDao.updateById(sysUser);
     }
 
