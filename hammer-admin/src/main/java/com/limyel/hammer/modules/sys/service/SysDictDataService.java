@@ -14,7 +14,7 @@ public interface SysDictDataService extends IService<SysDictDataEntity> {
 
     IPage<SysDictDataEntity> listByPage(Integer pageNum, Integer pageSize);
 
-    void add(SysDictDataEntity sysDictTypeEntity);
+    void add(SysDictDataEntity sysDictData);
 
-    void update(SysDictDataEntity sysDictTypeEntity);
+    void update(SysDictDataEntity sysDictData);
 }

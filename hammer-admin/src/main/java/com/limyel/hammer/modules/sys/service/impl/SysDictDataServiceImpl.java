@@ -34,17 +34,17 @@ public class SysDictDataServiceImpl extends ServiceImpl<SysDictDataDao, SysDictD
     }
 
     @Override
-    public void add(SysDictDataEntity SysDictDataEntity) {
-        SysDictDataEntity sysDictType = BeanUtil.copyProperties(SysDictDataEntity, SysDictDataEntity.class);
+    public void add(SysDictDataEntity sysDictDataEntity) {
+        SysDictDataEntity sysDictData = BeanUtil.copyProperties(sysDictDataEntity, SysDictDataEntity.class);
 
-        sysDictDataDao.insert(sysDictType);
+        sysDictDataDao.insert(sysDictData);
     }
 
     @Override
-    public void update(SysDictDataEntity SysDictDataEntity) {
-        SysDictDataEntity sysDictType = BeanUtil.copyProperties(SysDictDataEntity, SysDictDataEntity.class);
+    public void update(SysDictDataEntity sysDictDataEntity) {
+        SysDictDataEntity sysDictData = BeanUtil.copyProperties(sysDictDataEntity, SysDictDataEntity.class);
 
-        sysDictDataDao.updateById(sysDictType);
+        sysDictDataDao.updateById(sysDictData);
     }
 
 }
