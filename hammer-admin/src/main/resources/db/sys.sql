@@ -151,7 +151,7 @@ CREATE TABLE `sys_param` (
      `id` bigint NOT NULL AUTO_INCREMENT COMMENT '系统参数ID',
      `param_code` varchar(32) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '参数编码',
      `param_value` varchar(2048) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '参数值',
-     `param_type` tinyint(1) DEFAULT '1' COMMENT '类型 0: 系统参数，1: 非系统参数',
+     `param_type` tinyint DEFAULT '1' COMMENT '类型 0: 系统参数，1: 非系统参数',
      `remark` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
      `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
      `create_time` datetime DEFAULT NULL COMMENT '创建时间',
