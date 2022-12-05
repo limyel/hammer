@@ -13,6 +13,8 @@ public enum SysErrorCode implements ErrorCodeInterface {
     SYS_USER_GET_FAILD(11003, "当前系统用户获取失败"),
 
     SYS_MENU_SUB_MENU_EXIST(12001, "先删除子菜单或按钮"),
+
+    OSS_UPLOAD_FILE_ERROR(21001, "上传文件失败"),
     ;
 
     private final int code;
