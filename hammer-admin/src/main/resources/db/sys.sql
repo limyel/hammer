@@ -91,51 +91,76 @@ CREATE TABLE `sys_menu` (
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 INSERT INTO hammer.sys_menu (name,parent_id,`path`,query,order_num,permissions,status,`type`,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
     ('权限管理',NULL,NULL,NULL,0,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('角色管理',1,NULL,NULL,0,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('查看',2,NULL,NULL,0,'sys:role:list,sys:role:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('新增',2,NULL,NULL,1,'sys:role:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('修改',2,NULL,NULL,2,'sys:role:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('删除',2,NULL,NULL,3,'sys:role:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('用户管理',1,NULL,NULL,1,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('查看',7,NULL,NULL,0,'sys:user:list,sys:user:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('新增',7,NULL,NULL,1,'sys:user:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('修改',7,NULL,NULL,2,'sys:user:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+    ('用户管理',1,NULL,NULL,0,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',2,NULL,NULL,0,'sys:user:list,sys:user:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('新增',2,NULL,NULL,1,'sys:user:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',2,NULL,NULL,2,'sys:user:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',2,NULL,NULL,3,'sys:user:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('导出',2,NULL,NULL,4,'sys:user:export',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('角色管理',1,NULL,NULL,1,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',8,NULL,NULL,0,'sys:role:list,sys:role:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('新增',8,NULL,NULL,1,'sys:role:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
 INSERT INTO hammer.sys_menu (name,parent_id,`path`,query,order_num,permissions,status,`type`,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
-    ('删除',7,NULL,NULL,3,'sys:user:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('导出',7,NULL,NULL,4,'sys:user:export',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',8,NULL,NULL,2,'sys:role:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',8,NULL,NULL,3,'sys:role:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('系统设置',NULL,NULL,NULL,1,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('菜单管理',13,NULL,NULL,0,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('查看',14,NULL,NULL,0,'sys:menu:list,sys:menu:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('新增',14,NULL,NULL,1,'sys:menu:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('修改',14,NULL,NULL,2,'sys:menu:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('删除',14,NULL,NULL,3,'sys:menu:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('字典管理',13,NULL,NULL,1,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('查看',19,NULL,NULL,0,'sys:dict:list,sys:dict:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+    ('参数管理',13,NULL,NULL,1,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',19,NULL,NULL,0,'sys:param:list,sys:param:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
 INSERT INTO hammer.sys_menu (name,parent_id,`path`,query,order_num,permissions,status,`type`,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
-    ('新增',19,NULL,NULL,1,'sys:dict:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('修改',19,NULL,NULL,2,'sys:dict:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('删除',19,NULL,NULL,3,'sys:dict:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('定时任务',13,NULL,NULL,2,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('查看',24,NULL,NULL,0,'sys:schedule:list,sys:schedule:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('新增',24,NULL,NULL,1,'sys:schedule:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('修改',24,NULL,NULL,2,'sys:schedule:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('删除',24,NULL,NULL,3,'sys:schedule:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('暂停',24,NULL,NULL,4,'sys:schedule:pause',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('恢复',24,NULL,NULL,5,'sys:schedule:resume',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+    ('新增',19,NULL,NULL,1,'sys:param:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',19,NULL,NULL,2,'sys:param:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',19,NULL,NULL,3,'sys:param:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('导出',19,NULL,NULL,4,'sys:param:export',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('字典管理',13,NULL,NULL,2,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',25,NULL,NULL,0,'sys:dict:list,sys:dict:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('新增',25,NULL,NULL,1,'sys:dict:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',25,NULL,NULL,2,'sys:dict:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',25,NULL,NULL,3,'sys:dict:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('定时任务',13,NULL,NULL,3,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
 INSERT INTO hammer.sys_menu (name,parent_id,`path`,query,order_num,permissions,status,`type`,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
-    ('立即执行',24,NULL,NULL,6,'sys:schedule:run',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('日志列表',24,NULL,NULL,7,'sys:schedule:log',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('文件上传',13,NULL,NULL,3,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('查看',33,NULL,NULL,0,'sys:oss:list,sys:oss:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('新增',33,NULL,NULL,1,'sys:oss:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('修改',33,NULL,NULL,2,'sys:oss:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('删除',33,NULL,NULL,3,'sys:oss:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',30,NULL,NULL,0,'sys:schedule:list,sys:schedule:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('新增',30,NULL,NULL,1,'sys:schedule:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',30,NULL,NULL,2,'sys:schedule:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',30,NULL,NULL,3,'sys:schedule:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('暂停',30,NULL,NULL,4,'sys:schedule:pause',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('恢复',30,NULL,NULL,5,'sys:schedule:resume',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('立即执行',30,NULL,NULL,6,'sys:schedule:run',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('日志列表',30,NULL,NULL,7,'sys:schedule:log',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('文件上传',13,NULL,NULL,4,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('查看',39,NULL,NULL,0,'sys:oss:list,sys:oss:get',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+INSERT INTO hammer.sys_menu (name,parent_id,`path`,query,order_num,permissions,status,`type`,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
+    ('新增',39,NULL,NULL,1,'sys:oss:add',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('修改',39,NULL,NULL,2,'sys:oss:update',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('删除',39,NULL,NULL,3,'sys:oss:delete',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     ('日志管理',NULL,NULL,NULL,2,NULL,0,0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('登录日志',38,NULL,NULL,0,'sys:log:login',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
-    ('操作日志',38,NULL,NULL,1,'sys:log:operation',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+    ('登录日志',44,NULL,NULL,0,'sys:log:login',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
+    ('操作日志',44,NULL,NULL,1,'sys:log:operation',0,1,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
+
+
+-- hammer.sys_param definition
+
+CREATE TABLE `sys_param` (
+     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '系统参数ID',
+     `param_code` varchar(32) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '参数编码',
+     `param_value` varchar(2048) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '参数值',
+     `param_type` tinyint(1) DEFAULT '1' COMMENT '类型 0: 系统参数，1: 非系统参数',
+     `remark` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
+     `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+     `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+     `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+     PRIMARY KEY (`id`),
+     UNIQUE KEY `param_code` (`param_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 -- hammer.sys_oss definition
@@ -165,7 +190,7 @@ CREATE TABLE `sys_role` (
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 INSERT INTO hammer.sys_role (name,status,remark,creator_id,create_time,updater_id,update_time,delete_time) VALUES
     ('超级管理员',0,NULL,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
 
@@ -182,7 +207,7 @@ CREATE TABLE `sys_role_menu` (
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 INSERT INTO hammer.sys_role_menu (role_id,menu_id,creator_id,create_time,updater_id,update_time,delete_time) VALUES
     (1,1,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
     (1,2,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL),
@@ -241,7 +266,7 @@ CREATE TABLE `sys_role_user` (
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 INSERT INTO hammer.sys_role_user (role_id,user_id,creator_id,create_time,updater_id,update_time,delete_time) VALUES
     (1,1,1,'2022-11-28 15:00:30',1,'2022-11-28 15:00:30',NULL);
 
@@ -267,6 +292,6 @@ CREATE TABLE `sys_user` (
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`),
 UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 INSERT INTO hammer.sys_user (username,password,avatar,gender,email,mobile,dept_id,super_admin,status,creator_id,create_time,updater_id,update_time,remark,delete_time) VALUES
     ('admin','$2a$10$VZ51iDHJn/T5pZc0eglavuVkhaoL1psHlrEUaeKrE5K.KbvJU.e.u','',0,'','',NULL,0,0,NULL,'2022-11-28 15:00:30',NULL,'2022-11-28 15:00:30',NULL,NULL);
