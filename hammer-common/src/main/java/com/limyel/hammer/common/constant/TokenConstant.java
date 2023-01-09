@@ -17,4 +17,8 @@ public class TokenConstant {
     public final static String BEARER_PATTERN = "^Bearer$";
 
     public final static int AUTHORIZATION_SPLIT_LEN = 2;
+
+    public final static String REFRESH_TOKEN_HEADER = "RefreshToken";
+
+    public final static String TOKEN_HEADER = "Token";
 }

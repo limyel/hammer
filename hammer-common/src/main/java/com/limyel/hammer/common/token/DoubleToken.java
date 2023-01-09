@@ -80,21 +80,30 @@ public class DoubleToken extends AbstractToken {
                 .sign(this.algorithm);
     }
 
-    public Map<String, Claim> decodeAccessToken(String token) {
-        DecodedJWT jwt = this.accessVerifier.verify(token);
+    public Map<String, Claim> decodeToken(String token, String tokenType) {
+        JWTVerifier jwtVerifier = getVerifier(tokenType);
+        DecodedJWT jwt = jwtVerifier.verify(token);
         this.checkTokenExpired(jwt.getExpiresAt());
-        this.checkTokenType(jwt.getClaim("type").asString(), TokenConstant.ACCESS_TOKEN);
+        this.checkTokenType(jwt.getClaim("type").asString(), tokenType);
         this.checkTokenScope(jwt.getClaim("scope").asString());
         return jwt.getClaims();
     }
 
-    public Map<String, Claim> decodeRefreshToken(String token) {
-        DecodedJWT jwt = this.refreshVerifier.verify(token);
-        this.checkTokenExpired(jwt.getExpiresAt());
-        this.checkTokenType(jwt.getClaim("type").asString(), TokenConstant.REFRESH_TOKEN);
-        this.checkTokenScope(jwt.getClaim("scope").asString());
-        return jwt.getClaims();
-    }
+//    public Map<String, Claim> decodeAccessToken(String token) {
+//        DecodedJWT jwt = this.accessVerifier.verify(token);
+//        this.checkTokenExpired(jwt.getExpiresAt());
+//        this.checkTokenType(jwt.getClaim("type").asString(), TokenConstant.ACCESS_TOKEN);
+//        this.checkTokenScope(jwt.getClaim("scope").asString());
+//        return jwt.getClaims();
+//    }
+//
+//    public Map<String, Claim> decodeRefreshToken(String token) {
+//        DecodedJWT jwt = this.refreshVerifier.verify(token);
+//        this.checkTokenExpired(jwt.getExpiresAt());
+//        this.checkTokenType(jwt.getClaim("type").asString(), TokenConstant.REFRESH_TOKEN);
+//        this.checkTokenScope(jwt.getClaim("scope").asString());
+//        return jwt.getClaims();
+//    }
 
     public String generateAccessToken(long identity) {
         return this.generateToken(TokenConstant.ACCESS_TOKEN, identity, TokenConstant.HAMMER_SCOPE, this.accessExpire);
@@ -151,6 +160,15 @@ public class DoubleToken extends AbstractToken {
                 .acceptExpiresAt(this.refreshExpire)
                 .build();
         this.builder = JWT.create();
+    }
+
+    public JWTVerifier getVerifier(String tokenType) {
+        if (TokenConstant.ACCESS_TOKEN.equals(tokenType)) {
+            return this.accessVerifier;
+        } else if (TokenConstant.REFRESH_TOKEN.equals(tokenType)) {
+            return this.refreshVerifier;
+        }
+        return null;
     }
 
     private Date getExpireDate(int expireSecond) {

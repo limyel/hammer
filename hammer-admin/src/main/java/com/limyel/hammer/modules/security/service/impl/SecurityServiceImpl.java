@@ -22,17 +22,11 @@ import java.util.Optional;
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
+    @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
-    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
 
-    private DoubleToken doubleToken;
     @Autowired
-    public void setDoubleToken(DoubleToken doubleToken) {
-        this.doubleToken = doubleToken;
-    }
+    private DoubleToken doubleToken;
 
     @Override
     public TokensResult doLogin(LoginRequest loginRequest) {

@@ -29,4 +29,9 @@ public class SecurityController {
         return Result.success(tokens);
     }
 
+    @PostMapping("/refresh")
+    public Result<TokensResult> refreshToken() {
+        return null;
+    }
+
 }

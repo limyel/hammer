@@ -1,6 +1,8 @@
 package com.limyel.hammer.modules.security.filter;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
+import com.limyel.hammer.common.constant.JwtClaimConstant;
 import com.limyel.hammer.common.constant.TokenConstant;
 import com.limyel.hammer.common.exception.HammerException;
 import com.limyel.hammer.common.exception.error.ErrorCode;
@@ -43,7 +45,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws ServletException, IOException {
-        Optional<Map<String, Claim>> optionalClaims = Optional.ofNullable(this.resolveToken(request));
+        Optional<Map<String, Claim>> optionalClaims = Optional.ofNullable(this.resolveToken(request, response, filterChain));
         if (optionalClaims.isPresent()) {
             Map<String, Claim> claims = optionalClaims.get();
             String identity = claims.get("identity").asString();
@@ -59,11 +61,29 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private Map<String, Claim> resolveToken(HttpServletRequest request) {
-        String authorization = request.getHeader(TokenConstant.AUTHORIZATION_HEADER);
-        if (!StringUtils.hasText(authorization)) {
-            return null;
+    private Map<String, Claim> resolveToken(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) {
+        String accessToken = getAccessToken(request);
+        Map<String, Claim> claimMap = null;
+
+        try {
+            claimMap = doubleToken.decodeToken(accessToken, TokenConstant.ACCESS_TOKEN);
+        } catch (TokenExpiredException e) {
+            claimMap = handlerRefreshToken(request, response, filterChain);
         }
+
+        return claimMap;
+    }
+
+    private Map<String, Claim> handlerRefreshToken(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) {
+        String refreshToken = getRefreshToken(request);
+        Map<String, Claim> claimMap = doubleToken.decodeToken(refreshToken, TokenConstant.REFRESH_TOKEN);
+        String newToken = doubleToken.generateAccessToken(claimMap.get(JwtClaimConstant.IDENTITY).asString());
+        response.setHeader(TokenConstant.TOKEN_HEADER, newToken);
+
+        return claimMap;
+    }
+
+    private String getToken(String authorization) {
         String[] splits = authorization.split(" ");
         if (splits.length != TokenConstant.AUTHORIZATION_SPLIT_LEN) {
             throw new HammerException(ErrorCode.JWT_RESOLVE_FAILED);
@@ -73,8 +93,19 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         if (!Pattern.matches(TokenConstant.BEARER_PATTERN, scheme)) {
             throw new HammerException(ErrorCode.JWT_RESOLVE_FAILED);
         }
-
-        return doubleToken.decodeAccessToken(tokenStr);
+        return tokenStr;
     }
 
+    private String getAccessToken(HttpServletRequest request) {
+        String authorization = request.getHeader(TokenConstant.AUTHORIZATION_HEADER);
+        if (!StringUtils.hasText(authorization)) {
+            // todo 抛出异常
+            return null;
+        }
+        return getToken(authorization);
+    }
+
+    private String getRefreshToken(HttpServletRequest request) {
+        return request.getHeader(TokenConstant.REFRESH_TOKEN_HEADER);
+    }
 }
