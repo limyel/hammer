@@ -21,12 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
-
     @Autowired
-    public void setJwtAuthenticationTokenFilter(JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter) {
-        this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
-    }
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {

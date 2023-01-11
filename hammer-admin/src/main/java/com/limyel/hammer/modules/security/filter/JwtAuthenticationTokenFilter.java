@@ -62,13 +62,14 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     }
 
     private Map<String, Claim> resolveToken(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) {
-        String accessToken = getAccessToken(request);
+        Optional<String> optionalAccessToken = Optional.ofNullable(getAccessToken(request));
         Map<String, Claim> claimMap = null;
-
-        try {
-            claimMap = doubleToken.decodeToken(accessToken, TokenConstant.ACCESS_TOKEN);
-        } catch (TokenExpiredException e) {
-            claimMap = handlerRefreshToken(request, response, filterChain);
+        if (optionalAccessToken.isPresent()) {
+            try {
+                claimMap = doubleToken.decodeToken(optionalAccessToken.get(), TokenConstant.ACCESS_TOKEN);
+            } catch (TokenExpiredException e) {
+                claimMap = handlerRefreshToken(request, response, filterChain);
+            }
         }
 
         return claimMap;
