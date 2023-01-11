@@ -1,5 +1,6 @@
 package com.limyel.hammer.common.exception;
 
+import com.limyel.hammer.common.exception.error.ErrorCode;
 import com.limyel.hammer.common.exception.error.ErrorCodeInterface;
 
 /**
@@ -11,6 +12,10 @@ public class HammerException extends RuntimeException {
     private final int code;
 
     private final String msg;
+
+    public HammerException() {
+        this(ErrorCode.FAIL);
+    }
 
     public HammerException(int code, String msg) {
         this.code = code;

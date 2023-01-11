@@ -8,6 +8,7 @@ import com.limyel.hammer.modules.sys.model.entity.SysDictDataEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 文件上传
@@ -33,10 +34,10 @@ public class SysOssController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('sys:oss:add')")
-    public Result<?> add(@RequestBody SysOssEntity sysOssEntity) {
-        sysOssService.add(sysOssEntity);
+    public Result<SysOssEntity> add(@RequestParam("file") MultipartFile file) {
+        SysOssEntity sysOss = sysOssService.add(file);
 
-        return Result.success();
+        return Result.success(sysOss);
     }
 
     @PutMapping
@@ -47,9 +48,9 @@ public class SysOssController {
         return Result.success();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping
     @PreAuthorize("hasAuthority('sys:oss:delete')")
-    public Result<?> delete(@PathVariable("id") Long id) {
+    public Result<?> delete() {
 
         return Result.success();
     }

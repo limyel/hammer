@@ -16,4 +16,8 @@ public interface SysParamService extends IService<SysParamEntity> {
     void add(SysParamEntity sysParamEntity);
 
     void update(SysParamEntity sysParamEntity);
+
+    <T> T getValueObject(String paramCode, Class<T> clazz);
+
+    String getValue(String paramCode);
 }
